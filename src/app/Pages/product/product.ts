@@ -14,12 +14,13 @@ export class Product {
   //  repeat = Array.from({ length:6 });
   products: any[] = [];
   // api service object declare cheythu
-  constructor(private apiservice: Apiservice) { }
+  constructor(private apiservice: Apiservice, private cdr: ChangeDetectorRef) { }
   ngOnInit() {
     this.apiservice.getProduct().subscribe((data: any) => {
       this.products = data.products;
-
+      this.cdr.detectChanges();
     })
   }
 
 }
+
